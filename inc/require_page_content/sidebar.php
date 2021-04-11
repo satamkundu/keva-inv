@@ -37,6 +37,12 @@
       <span>Product Sell</span></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" href="due_received.php">
+      <i class="fas fa-money-bill-wave-alt"></i>
+      <span>Due Receive</span></a>
+  </li>
+
   <hr class="sidebar-divider">
 
 

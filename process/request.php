@@ -7,7 +7,7 @@ if(isset($_GET['q'])){
     $client_type = $_GET['client_type'];
 
     if(isset($q) || !empty($q)) {
-        $query = "SELECT * FROM product WHERE p_name LIKE '$q%'";
+        $query = "SELECT * FROM product WHERE p_name LIKE '%$q%'";
         $result = mysqli_query($con, $query);
         $res = array();
         while($resultSet = mysqli_fetch_assoc($result)) {   
@@ -36,7 +36,7 @@ if(isset($_GET['q'])){
 if(isset($_GET['qr'])){
     $q = $_GET['qr'];
     if(isset($q) || !empty($q)) {
-        $query = "SELECT * FROM company_client WHERE name LIKE '$q%'";
+        $query = "SELECT * FROM company_client WHERE name LIKE '%$q%'";
         $result = mysqli_query($con, $query);
         $res = array();
         while($resultSet = mysqli_fetch_assoc($result)) {   

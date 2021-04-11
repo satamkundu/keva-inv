@@ -5,7 +5,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <?php include 'inc/require_page_content/header.php'; ?>
-        <?php include 'inc/pages/rec_form.php'; ?>
+        <?php include 'inc/pages/rec_due.php'; ?>
       </div>
       <?php include 'inc/require_page_content/footer.php'; ?>
     </div>
@@ -15,5 +15,3 @@
   </a>
   <?php //include 'inc/model/logout.php'; ?>
   <?php include 'inc/require_page_content/bottom.php'; ?>
-
-<!-- <script type="text/javascript" src="js/custom/order.js"></script> -->

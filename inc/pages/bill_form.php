@@ -103,7 +103,12 @@
 										<input type="number" id="quantity<?php echo $x; ?>" autocomplete="off" class="form-control" min="1" placeholder="Enter Quantity" onkeyup="check_qty(<?php echo $x; ?>)" disabled/>
 										<span>&nbsp;</span>
 									</div>
-								</td>				  				
+								</td>
+								<td class="delete_btn'+count+'">
+				  					<div class="form-group mar-rig">
+				  						<button class="btn btn-danger btn-circle removeProductRowBtn" type="button" id="removeProductRowBtn" onclick="removeProductRow(<?php echo $x; ?>)" style="margin-top: -2rem;"><i class="fas fa-trash"></i></button>				
+				  					</div>
+				  				</td>			  				
 							</tr>
 						  	<?php
 					  			$arrayNumber++;
@@ -327,9 +332,12 @@
 			count = tableRow.substring(3);
 
 			for(var i = 1; i <= count; i++){
+
+				if( !$("#row"+i).length ) continue;
+
 				let qt = parseInt($("#quantity"+i).val());
 				let va = ( qt * parseFloat($("#p_rate"+i).val()) );
-				let bp = parseInt($("#p_bp"+i).val()) * qt;
+				let bp = parseFloat($("#p_bp"+i).val()) * qt;
 
 				let to = parseFloat(va) + parseFloat($("#p_gst"+i).val()) + parseFloat($("#p_cgst"+i).val()) + parseFloat($("#p_sgst"+i).val()) + parseFloat($("#p_igst"+i).val());
 
@@ -355,7 +363,7 @@
 			}
 		}
 
-		// console.log(details);
+		console.log(details);
 		$(".bill-value").text(details.total_amount);
 		$(".bp-value").text(details.total_bp);
 		
@@ -491,7 +499,7 @@
 			arrayNumber = 0;
 		}
 
-		$(".delete_btn"+(count-1)).hide();
+		// $(".delete_btn"+(count-1)).hide();
 
 		var tr = '<tr id="row'+count+'" class="'+arrayNumber+'">'+
 			  	'<td>'+
@@ -513,7 +521,7 @@
 				'</td>'+
 				'<td>'+
 					'<div class="form-group mar-rig">'+
-						'<input type="number" id="quantity'+count+'" autocomplete="off" class="form-control" min="1" placeholder="Enter Quantity"/>'+
+						'<input type="number" id="quantity'+count+'" autocomplete="off" class="form-control" min="1" placeholder="Enter Quantity" onkeyup="check_qty('+count+')" disabled/>'+
 						'<span>&nbsp;</span>'+
 					'</div>'+
 				'</td>'+
@@ -533,7 +541,7 @@
 	function removeProductRow(row = null) {
 		if(row) {
 			$("#row"+row).remove();
-			$(".delete_btn"+(row-1)).show();
+			// $(".delete_btn"+(row-1)).show();
 		} else {
 			alert('error! Refresh the page again');
 		}
